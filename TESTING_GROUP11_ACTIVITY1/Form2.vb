@@ -162,8 +162,8 @@ Public Class Form2
     End Sub
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        loadData()
-        MSloadData()
+        'loadData()
+        'MSloadData()
     End Sub
 
     Private Sub btn_MY_Update_Click(sender As Object, e As EventArgs) Handles btn_MY_Update.Click
@@ -265,5 +265,10 @@ Public Class Form2
             MYconnection.Close()
         End Try
 
+    End Sub
+
+    Private Sub btn_loadRecords_Click(sender As Object, e As EventArgs) Handles btn_loadRecords.Click
+        MSloadData()
+        loadData()
     End Sub
 End Class
