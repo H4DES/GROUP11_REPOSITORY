@@ -2,6 +2,8 @@
 Imports MySql.Data.MySqlClient
 Public Class Form2
 
+    'SEARCH BAR IN DATA GRID VIEW
+
     Public Sub loadData()
         MYconnection = New MySqlConnection(MYconnectionString)
 
