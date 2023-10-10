@@ -18,7 +18,7 @@ Public Class Form2
     Public Sub MSloadData()
         MSconnection = New SqlConnection(MSconnectionString)
 
-        Dim MScommand As New SqlCommand("SELECT * FROM tbl_info", MSconnection)
+        Dim MScommand As New SqlCommand("SELECT idno, CONCAT(firstname, ' ', middlename, ' ', lastname) AS fullname, course FROM tbl_info;", MSconnection)
 
         Dim da As New SqlDataAdapter(MScommand)
         Dim dt As New DataTable
@@ -125,19 +125,36 @@ Public Class Form2
 
     Private Sub DataGridView2_MouseClick(sender As Object, e As MouseEventArgs) Handles DataGridView2.MouseClick
 
-        MYconnection = New MySqlConnection(MYconnectionString)
+        MSconnection = New SqlConnection(MSconnectionString)
 
         Try
 
-            MYconnection.Open()
-            Dim dr As DataGridViewRow = DataGridView2.SelectedRows(0)
-            txtID.Text = dr.Cells(0).Value.ToString()
-            txtfname.Text = dr.Cells(1).Value.ToString()
-            txtmname.Text = dr.Cells(2).Value.ToString()
-            txtlname.Text = dr.Cells(3).Value.ToString()
-            course.Text = dr.Cells(4).Value.ToString()
-        Catch ex As Exception
+            MSconnection.Open()
 
+            Dim dr As DataGridViewRow = DataGridView2.SelectedRows(0)
+
+            txtID.Text = dr.Cells(0).Value.ToString()
+            course.Text = dr.Cells(2).Value.ToString()
+
+            Dim query As String = "SELECT firstname, middlename, lastname FROM tbl_info WHERE idno = @ID"
+            Dim MScommand As New SqlCommand(query, MSconnection)
+            MScommand.Parameters.AddWithValue("@ID", txtID.Text)
+
+            Dim Reader As SqlDataReader = MScommand.ExecuteReader()
+
+            If Reader.Read() Then
+                txtfname.Text = Reader("firstname").ToString()
+                txtmname.Text = Reader("middlename").ToString()
+                txtlname.Text = Reader("lastname").ToString()
+            Else
+                MessageBox.Show("Student not found.")
+            End If
+            Reader.Close()
+
+
+        Catch ex As Exception
+        Finally
+            MYconnection.Close()
         End Try
     End Sub
 
@@ -177,11 +194,30 @@ Public Class Form2
     End Sub
 
     Private Sub btn_MS_Update_Click(sender As Object, e As EventArgs) Handles btn_MS_Update.Click
-        Dim update As DataGridViewRow = DataGridView2.SelectedRows(0)
-        update.Cells(0).Value = txtID.Text
-        update.Cells(1).Value = txtfname.Text
-        update.Cells(2).Value = txtmname.Text
-        update.Cells(3).Value = txtlname.Text
-        update.Cells(4).Value = course.SelectedItem.ToString()
+        MSconnection = New SqlConnection(MSconnectionString)
+
+        Dim idno As String = txtID.Text
+
+        Try
+            MSconnection.Open()
+            Dim query As String = "UPDATE tbl_info SET idno = @ID, firstname = @Fname, middlename = @Mname, lastname = @Lname, course = @Course WHERE idno = @ID"
+            Dim MScommand As New SqlCommand(query, MSconnection)
+
+            MScommand.Parameters.AddWithValue("@ID", txtID.Text)
+            MScommand.Parameters.AddWithValue("@Fname", txtfname.Text)
+            MScommand.Parameters.AddWithValue("@Mname", txtmname.Text)
+            MScommand.Parameters.AddWithValue("@Lname", txtlname.Text)
+            MScommand.Parameters.AddWithValue("@Course", course.SelectedItem.ToString())
+
+            MScommand.ExecuteNonQuery()
+
+            MessageBox.Show("Records Updated Successfully!")
+            MSloadData()
+
+        Catch ex As Exception
+        Finally
+            MSconnection.Close()
+        End Try
+
     End Sub
 End Class

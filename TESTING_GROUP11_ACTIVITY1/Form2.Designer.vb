@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form2
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Form2
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -41,8 +41,6 @@ Partial Class Form2
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.idno = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -206,13 +204,15 @@ Partial Class Form2
         'DataGridView2
         '
         Me.DataGridView2.AllowUserToAddRows = False
+        Me.DataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5})
-        Me.DataGridView2.Location = New System.Drawing.Point(501, 253)
+        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column5})
+        Me.DataGridView2.Location = New System.Drawing.Point(479, 276)
         Me.DataGridView2.Name = "DataGridView2"
+        Me.DataGridView2.ReadOnly = True
         Me.DataGridView2.RowHeadersVisible = False
         Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView2.Size = New System.Drawing.Size(502, 214)
+        Me.DataGridView2.Size = New System.Drawing.Size(371, 214)
         Me.DataGridView2.TabIndex = 19
         '
         'Column1
@@ -220,38 +220,30 @@ Partial Class Form2
         Me.Column1.DataPropertyName = "idno"
         Me.Column1.HeaderText = "ID NO"
         Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
         '
         'Column2
         '
-        Me.Column2.DataPropertyName = "firstname"
-        Me.Column2.HeaderText = "FIRST NAME"
+        Me.Column2.DataPropertyName = "fullname"
+        Me.Column2.HeaderText = "FULL NAME"
         Me.Column2.Name = "Column2"
-        '
-        'Column3
-        '
-        Me.Column3.DataPropertyName = "middlename"
-        Me.Column3.HeaderText = "MIDDLE NAME"
-        Me.Column3.Name = "Column3"
-        '
-        'Column4
-        '
-        Me.Column4.DataPropertyName = "lastname"
-        Me.Column4.HeaderText = "LAST NAME"
-        Me.Column4.Name = "Column4"
+        Me.Column2.ReadOnly = True
         '
         'Column5
         '
         Me.Column5.DataPropertyName = "course"
         Me.Column5.HeaderText = "COURSE"
         Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
         '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idno, Me.fullname, Me.Columncourse})
-        Me.DataGridView1.Location = New System.Drawing.Point(556, 31)
+        Me.DataGridView1.Location = New System.Drawing.Point(479, 36)
         Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(371, 214)
@@ -262,6 +254,7 @@ Partial Class Form2
         Me.idno.DataPropertyName = "idno"
         Me.idno.HeaderText = "ID NO"
         Me.idno.Name = "idno"
+        Me.idno.ReadOnly = True
         '
         'fullname
         '
@@ -276,12 +269,13 @@ Partial Class Form2
         Me.Columncourse.DataPropertyName = "course"
         Me.Columncourse.HeaderText = "COURSE"
         Me.Columncourse.Name = "Columncourse"
+        Me.Columncourse.ReadOnly = True
         '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1015, 504)
+        Me.ClientSize = New System.Drawing.Size(877, 504)
         Me.Controls.Add(Me.DataGridView2)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.btn_MY_Delete)
@@ -328,12 +322,10 @@ Partial Class Form2
     Friend WithEvents btn_MY_Delete As Button
     Friend WithEvents DataGridView2 As DataGridView
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents idno As DataGridViewTextBoxColumn
     Friend WithEvents fullname As DataGridViewTextBoxColumn
     Friend WithEvents Columncourse As DataGridViewTextBoxColumn
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As DataGridViewTextBoxColumn
 End Class
