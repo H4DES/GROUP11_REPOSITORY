@@ -49,7 +49,7 @@ Public Class Form2
             MScommand.ExecuteNonQuery()
 
             MessageBox.Show("Records Inserted Successfully!")
-
+            loadData()
             MSloadData()
         Catch ex As SqlException
             MessageBox.Show("Error: " & ex.Message)
@@ -82,6 +82,7 @@ Public Class Form2
             MYcommand.ExecuteNonQuery() ' codes for execution of upper codes
 
             loadData()
+            MSloadData()
 
         Catch ex As MySqlException
             MessageBox.Show("Error: " & ex.Message)
@@ -186,6 +187,7 @@ Public Class Form2
 
             MessageBox.Show("Records Updated Successfully!")
             loadData()
+            MSloadData()
 
         Catch ex As MySqlException
             MessageBox.Show("Error: " & ex.Message)
@@ -197,8 +199,6 @@ Public Class Form2
 
     Private Sub btn_MS_Update_Click(sender As Object, e As EventArgs) Handles btn_MS_Update.Click
         MSconnection = New SqlConnection(MSconnectionString)
-
-        Dim idno As String = txtID.Text
 
         Try
             MSconnection.Open()
@@ -214,11 +214,55 @@ Public Class Form2
             MScommand.ExecuteNonQuery()
 
             MessageBox.Show("Records Updated Successfully!")
+            loadData()
             MSloadData()
 
-        Catch ex As Exception
+        Catch ex As SqlException
+            MessageBox.Show("Error: " & ex.Message)
         Finally
             MSconnection.Close()
+        End Try
+
+    End Sub
+
+    Private Sub btn_MS_Delete_Click(sender As Object, e As EventArgs) Handles btn_MS_Delete.Click
+        MSconnection = New SqlConnection(MSconnectionString)
+
+        Try
+            MSconnection.Open()
+            Dim query As String = "DELETE FROM tbl_info WHERE idno = @ID"
+            Dim MScommand As New SqlCommand(query, MSconnection)
+            MScommand.Parameters.AddWithValue("@ID", txtID.Text)
+
+            MScommand.ExecuteNonQuery()
+            MessageBox.Show("Records Deleted Successfully!")
+            loadData()
+            MSloadData()
+        Catch ex As SqlException
+            MessageBox.Show("Error: " & ex.Message)
+        Finally
+            MSconnection.Close()
+        End Try
+
+    End Sub
+
+    Private Sub btn_MY_Delete_Click(sender As Object, e As EventArgs) Handles btn_MY_Delete.Click
+        MYconnection = New MySqlConnection(MYconnectionString)
+
+        Try
+            MYconnection.Open()
+            Dim query As String = "DELETE FROM tbl_info WHERE idno = @ID"
+            Dim MYcommand As New MySqlCommand(query, MYconnection)
+            MYcommand.Parameters.AddWithValue("@ID", txtID.Text)
+
+            MYcommand.ExecuteNonQuery()
+            MessageBox.Show("Records Deleted Successfully!")
+            MSloadData()
+            loadData()
+        Catch ex As MySqlException
+            MessageBox.Show("Error: " & ex.Message)
+        Finally
+            MYconnection.Close()
         End Try
 
     End Sub
