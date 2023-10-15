@@ -267,8 +267,11 @@ Public Class Form2
 
     End Sub
 
-    Private Sub btn_loadRecords_Click(sender As Object, e As EventArgs) Handles btn_loadRecords.Click
+    Private Sub btn_loadRecords_Click(sender As Object, e As EventArgs) Handles btn_MSloadRecords.Click
         MSloadData()
+    End Sub
+
+    Private Sub btn_MYloadRecords_Click(sender As Object, e As EventArgs) Handles btn_MYloadRecords.Click
         loadData()
     End Sub
 End Class
