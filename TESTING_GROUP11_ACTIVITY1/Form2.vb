@@ -37,10 +37,9 @@ Public Class Form2
 
             Dim selectedCourse As String = course.SelectedItem.ToString()
 
-            Dim query As String = "INSERT INTO tbl_info (idno, firstname, middlename, lastname, course) VALUES (@Id, @Fname, @Mname, @Lname, @Course)"
+            Dim query As String = "INSERT INTO tbl_info (firstname, middlename, lastname, course) VALUES (@Fname, @Mname, @Lname, @Course)"
             Dim MScommand As New SqlCommand(query, MSconnection)
 
-            MScommand.Parameters.AddWithValue("@Id", txtID.Text)
             MScommand.Parameters.AddWithValue("@Fname", txtfname.Text)
             MScommand.Parameters.AddWithValue("@Mname", txtmname.Text)
             MScommand.Parameters.AddWithValue("@Lname", txtlname.Text)
@@ -49,6 +48,7 @@ Public Class Form2
             MScommand.ExecuteNonQuery()
 
             MessageBox.Show("Records Inserted Successfully!")
+
             loadData()
             MSloadData()
         Catch ex As SqlException
@@ -68,10 +68,9 @@ Public Class Form2
 
             Dim selectedCourse As String = course.SelectedItem.ToString() 'new add combo box codes and course variable name
 
-            Dim query As String = "INSERT INTO tbl_info (idno, firstname, middlename, lastname, course) VALUES (@Id, @Fname, @Mname, @Lname, @Course)"
+            Dim query As String = "INSERT INTO tbl_info (firstname, middlename, lastname, course) VALUES (@Fname, @Mname, @Lname, @Course)"
             Dim MYcommand As New MySqlCommand(query, MYconnection)
 
-            MYcommand.Parameters.AddWithValue("@Id", txtID.Text) ' variable name for all text boxes
             MYcommand.Parameters.AddWithValue("@Fname", txtfname.Text)
             MYcommand.Parameters.AddWithValue("@Mname", txtmname.Text)
             MYcommand.Parameters.AddWithValue("@Lname", txtlname.Text)
@@ -91,6 +90,8 @@ Public Class Form2
         End Try
     End Sub
 
+    Public ID As String = ""
+
     Private Sub DataGridView1_MouseClick(sender As Object, e As MouseEventArgs) Handles DataGridView1.MouseClick
 
         MYconnection = New MySqlConnection(MYconnectionString)
@@ -101,12 +102,12 @@ Public Class Form2
 
             Dim dr As DataGridViewRow = DataGridView1.SelectedRows(0)
 
-            txtID.Text = dr.Cells(0).Value.ToString()
+            ID = dr.Cells(0).Value.ToString()
             course.Text = dr.Cells(2).Value.ToString()
 
             Dim query As String = "SELECT firstname, middlename, lastname FROM tbl_info WHERE idno = @ID"
             Dim MYcommand As New MySqlCommand(query, MYconnection)
-            MYcommand.Parameters.AddWithValue("@ID", txtID.Text)
+            MYcommand.Parameters.AddWithValue("@ID", ID)
 
             Dim Reader As MySqlDataReader = MYcommand.ExecuteReader()
 
@@ -136,12 +137,12 @@ Public Class Form2
 
             Dim dr As DataGridViewRow = DataGridView2.SelectedRows(0)
 
-            txtID.Text = dr.Cells(0).Value.ToString()
+            ID = dr.Cells(0).Value.ToString()
             course.Text = dr.Cells(2).Value.ToString()
 
             Dim query As String = "SELECT firstname, middlename, lastname FROM tbl_info WHERE idno = @ID"
             Dim MScommand As New SqlCommand(query, MSconnection)
-            MScommand.Parameters.AddWithValue("@ID", txtID.Text)
+            MScommand.Parameters.AddWithValue("@ID", ID)
 
             Dim Reader As SqlDataReader = MScommand.ExecuteReader()
 
@@ -170,21 +171,19 @@ Public Class Form2
 
         MYconnection = New MySqlConnection(MYconnectionString)
 
-        Dim idno As String = txtID.Text
 
         Try
             MYconnection.Open()
-            Dim query As String = "UPDATE tbl_info SET idno = @ID, firstname = @Fname, middlename = @Mname, lastname = @Lname, course = @Course WHERE idno = @ID"
+            Dim query As String = "UPDATE tbl_info SET firstname = @Fname, middlename = @Mname, lastname = @Lname, course = @Course WHERE idno = @ID"
             Dim MYcommand As New MySqlCommand(query, MYconnection)
 
-            MYcommand.Parameters.AddWithValue("@ID", txtID.Text)
+            MYcommand.Parameters.AddWithValue("@ID", ID)
             MYcommand.Parameters.AddWithValue("@Fname", txtfname.Text)
             MYcommand.Parameters.AddWithValue("@Mname", txtmname.Text)
             MYcommand.Parameters.AddWithValue("@Lname", txtlname.Text)
             MYcommand.Parameters.AddWithValue("@Course", course.SelectedItem.ToString())
 
             MYcommand.ExecuteNonQuery()
-
             MessageBox.Show("Records Updated Successfully!")
             loadData()
             MSloadData()
@@ -202,18 +201,26 @@ Public Class Form2
 
         Try
             MSconnection.Open()
-            Dim query As String = "UPDATE tbl_info SET idno = @ID, firstname = @Fname, middlename = @Mname, lastname = @Lname, course = @Course WHERE idno = @ID"
+            Dim query As String = "UPDATE tbl_info SET firstname = @Fname, middlename = @Mname, lastname = @Lname, course = @Course WHERE idno = @ID"
             Dim MScommand As New SqlCommand(query, MSconnection)
 
-            MScommand.Parameters.AddWithValue("@ID", txtID.Text)
+            MScommand.Parameters.AddWithValue("@ID", ID)
             MScommand.Parameters.AddWithValue("@Fname", txtfname.Text)
             MScommand.Parameters.AddWithValue("@Mname", txtmname.Text)
             MScommand.Parameters.AddWithValue("@Lname", txtlname.Text)
             MScommand.Parameters.AddWithValue("@Course", course.SelectedItem.ToString())
 
+
             MScommand.ExecuteNonQuery()
 
             MessageBox.Show("Records Updated Successfully!")
+
+            'txtID.Clear()
+            'txtfname.Clear()
+            'txtmname.Clear()
+            'txtlname.Clear()
+            'course.SelectedItem = Nothing
+
             loadData()
             MSloadData()
 
@@ -232,10 +239,16 @@ Public Class Form2
             MSconnection.Open()
             Dim query As String = "DELETE FROM tbl_info WHERE idno = @ID"
             Dim MScommand As New SqlCommand(query, MSconnection)
-            MScommand.Parameters.AddWithValue("@ID", txtID.Text)
+            MScommand.Parameters.AddWithValue("@ID", ID)
 
             MScommand.ExecuteNonQuery()
             MessageBox.Show("Records Deleted Successfully!")
+
+            txtfname.Clear()
+            txtmname.Clear()
+            txtlname.Clear()
+            course.SelectedItem = Nothing
+
             loadData()
             MSloadData()
         Catch ex As SqlException
@@ -253,10 +266,17 @@ Public Class Form2
             MYconnection.Open()
             Dim query As String = "DELETE FROM tbl_info WHERE idno = @ID"
             Dim MYcommand As New MySqlCommand(query, MYconnection)
-            MYcommand.Parameters.AddWithValue("@ID", txtID.Text)
+            MYcommand.Parameters.AddWithValue("@ID", ID)
 
             MYcommand.ExecuteNonQuery()
             MessageBox.Show("Records Deleted Successfully!")
+
+
+            txtfname.Clear()
+            txtmname.Clear()
+            txtlname.Clear()
+            course.SelectedItem = Nothing
+
             MSloadData()
             loadData()
         Catch ex As MySqlException
@@ -274,4 +294,49 @@ Public Class Form2
     Private Sub btn_MYloadRecords_Click(sender As Object, e As EventArgs) Handles btn_MYloadRecords.Click
         loadData()
     End Sub
+
+    Private Sub btn_Clear_Click(sender As Object, e As EventArgs) Handles btn_Clear.Click
+        txtfname.Clear()
+        txtmname.Clear()
+        txtlname.Clear()
+        course.SelectedItem = Nothing
+
+    End Sub
+
+    Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
+        Try
+            MSconnection.Open()
+
+            Dim MScommand As New SqlCommand("SELECT idno, CONCAT(firstname, ' ', middlename, ' ', lastname) AS fullname, course FROM tbl_info WHERE firstname LIKE @holder OR lastname LIKE @holder;", MSconnection)
+            MScommand.Parameters.AddWithValue("@holder", txtSearch.Text & "%")
+
+            Dim da As New SqlDataAdapter(MScommand)
+            Dim dt As New DataTable
+
+            da.Fill(dt)
+            DataGridView2.DataSource = dt
+        Catch ex As Exception
+            MessageBox.Show("An error occurred: " & ex.Message)
+        Finally
+            MSconnection.Close()
+        End Try
+
+        Try
+            MYconnection.Open()
+
+            Dim MYcommand As New MySqlCommand("SELECT idno, CONCAT(firstname, ' ', middlename, ' ', lastname) AS fullname, course FROM tbl_info WHERE firstname LIKE @holder OR lastname LIKE @holder;", MYconnection)
+            MYcommand.Parameters.AddWithValue("@holder", txtSearch.Text & "%")
+
+            Dim dta As New MySqlDataAdapter(MYcommand)
+            Dim dtl As New DataTable
+
+            dta.Fill(dtl)
+            DataGridView1.DataSource = dtl
+        Catch ex As Exception
+            MessageBox.Show("An error occurred: " & ex.Message)
+        Finally
+            MYconnection.Close()
+        End Try
+    End Sub
+
 End Class

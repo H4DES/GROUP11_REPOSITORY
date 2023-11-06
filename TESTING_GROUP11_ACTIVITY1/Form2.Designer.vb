@@ -22,11 +22,9 @@ Partial Class Form2
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.txtID = New System.Windows.Forms.TextBox()
         Me.txtfname = New System.Windows.Forms.TextBox()
         Me.txtmname = New System.Windows.Forms.TextBox()
         Me.txtlname = New System.Windows.Forms.TextBox()
@@ -50,25 +48,18 @@ Partial Class Form2
         Me.Label7 = New System.Windows.Forms.Label()
         Me.btn_MSloadRecords = New System.Windows.Forms.Button()
         Me.btn_MYloadRecords = New System.Windows.Forms.Button()
+        Me.btn_Clear = New System.Windows.Forms.Button()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtSearch = New System.Windows.Forms.TextBox()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(37, 19)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(66, 24)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "ID NO:"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(37, 68)
+        Me.Label2.Location = New System.Drawing.Point(37, 51)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(129, 24)
         Me.Label2.TabIndex = 1
@@ -78,7 +69,7 @@ Partial Class Form2
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(37, 116)
+        Me.Label3.Location = New System.Drawing.Point(37, 99)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(145, 24)
         Me.Label3.TabIndex = 2
@@ -88,24 +79,16 @@ Partial Class Form2
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(37, 165)
+        Me.Label4.Location = New System.Drawing.Point(37, 148)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(123, 24)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "LAST NAME:"
         '
-        'txtID
-        '
-        Me.txtID.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtID.Location = New System.Drawing.Point(188, 19)
-        Me.txtID.Name = "txtID"
-        Me.txtID.Size = New System.Drawing.Size(242, 29)
-        Me.txtID.TabIndex = 4
-        '
         'txtfname
         '
         Me.txtfname.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtfname.Location = New System.Drawing.Point(188, 68)
+        Me.txtfname.Location = New System.Drawing.Point(188, 51)
         Me.txtfname.Name = "txtfname"
         Me.txtfname.Size = New System.Drawing.Size(242, 29)
         Me.txtfname.TabIndex = 5
@@ -113,7 +96,7 @@ Partial Class Form2
         'txtmname
         '
         Me.txtmname.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtmname.Location = New System.Drawing.Point(188, 116)
+        Me.txtmname.Location = New System.Drawing.Point(188, 99)
         Me.txtmname.Name = "txtmname"
         Me.txtmname.Size = New System.Drawing.Size(242, 29)
         Me.txtmname.TabIndex = 6
@@ -121,7 +104,7 @@ Partial Class Form2
         'txtlname
         '
         Me.txtlname.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtlname.Location = New System.Drawing.Point(188, 160)
+        Me.txtlname.Location = New System.Drawing.Point(188, 143)
         Me.txtlname.Name = "txtlname"
         Me.txtlname.Size = New System.Drawing.Size(242, 29)
         Me.txtlname.TabIndex = 7
@@ -129,7 +112,7 @@ Partial Class Form2
         'btnMSSQL_INSERT
         '
         Me.btnMSSQL_INSERT.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnMSSQL_INSERT.Location = New System.Drawing.Point(84, 244)
+        Me.btnMSSQL_INSERT.Location = New System.Drawing.Point(21, 238)
         Me.btnMSSQL_INSERT.Name = "btnMSSQL_INSERT"
         Me.btnMSSQL_INSERT.Size = New System.Drawing.Size(139, 58)
         Me.btnMSSQL_INSERT.TabIndex = 8
@@ -139,7 +122,7 @@ Partial Class Form2
         'btnMYSQL_INSERT
         '
         Me.btnMYSQL_INSERT.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnMYSQL_INSERT.Location = New System.Drawing.Point(251, 244)
+        Me.btnMYSQL_INSERT.Location = New System.Drawing.Point(175, 238)
         Me.btnMYSQL_INSERT.Name = "btnMYSQL_INSERT"
         Me.btnMYSQL_INSERT.Size = New System.Drawing.Size(139, 58)
         Me.btnMYSQL_INSERT.TabIndex = 9
@@ -150,7 +133,7 @@ Partial Class Form2
         '
         Me.course.FormattingEnabled = True
         Me.course.Items.AddRange(New Object() {"BSIT", "BSHM", "BSBA", "BST"})
-        Me.course.Location = New System.Drawing.Point(188, 207)
+        Me.course.Location = New System.Drawing.Point(188, 190)
         Me.course.Name = "course"
         Me.course.Size = New System.Drawing.Size(242, 21)
         Me.course.TabIndex = 10
@@ -159,7 +142,7 @@ Partial Class Form2
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(37, 207)
+        Me.Label5.Location = New System.Drawing.Point(37, 190)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(94, 24)
         Me.Label5.TabIndex = 11
@@ -168,7 +151,7 @@ Partial Class Form2
         'btn_MS_Update
         '
         Me.btn_MS_Update.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_MS_Update.Location = New System.Drawing.Point(84, 308)
+        Me.btn_MS_Update.Location = New System.Drawing.Point(21, 302)
         Me.btn_MS_Update.Name = "btn_MS_Update"
         Me.btn_MS_Update.Size = New System.Drawing.Size(139, 58)
         Me.btn_MS_Update.TabIndex = 12
@@ -178,7 +161,7 @@ Partial Class Form2
         'btn_MY_Update
         '
         Me.btn_MY_Update.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_MY_Update.Location = New System.Drawing.Point(251, 308)
+        Me.btn_MY_Update.Location = New System.Drawing.Point(175, 302)
         Me.btn_MY_Update.Name = "btn_MY_Update"
         Me.btn_MY_Update.Size = New System.Drawing.Size(139, 58)
         Me.btn_MY_Update.TabIndex = 13
@@ -188,7 +171,7 @@ Partial Class Form2
         'btn_MS_Delete
         '
         Me.btn_MS_Delete.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_MS_Delete.Location = New System.Drawing.Point(84, 372)
+        Me.btn_MS_Delete.Location = New System.Drawing.Point(21, 366)
         Me.btn_MS_Delete.Name = "btn_MS_Delete"
         Me.btn_MS_Delete.Size = New System.Drawing.Size(139, 58)
         Me.btn_MS_Delete.TabIndex = 14
@@ -198,7 +181,7 @@ Partial Class Form2
         'btn_MY_Delete
         '
         Me.btn_MY_Delete.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_MY_Delete.Location = New System.Drawing.Point(251, 372)
+        Me.btn_MY_Delete.Location = New System.Drawing.Point(175, 366)
         Me.btn_MY_Delete.Name = "btn_MY_Delete"
         Me.btn_MY_Delete.Size = New System.Drawing.Size(139, 58)
         Me.btn_MY_Delete.TabIndex = 15
@@ -210,9 +193,8 @@ Partial Class Form2
         Me.DataGridView2.AllowUserToAddRows = False
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column5})
-        Me.DataGridView2.Location = New System.Drawing.Point(479, 290)
+        Me.DataGridView2.Location = New System.Drawing.Point(472, 380)
         Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.ReadOnly = True
         Me.DataGridView2.RowHeadersVisible = False
         Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView2.Size = New System.Drawing.Size(371, 214)
@@ -250,9 +232,8 @@ Partial Class Form2
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idno, Me.fullname, Me.Columncourse})
-        Me.DataGridView1.Location = New System.Drawing.Point(479, 36)
+        Me.DataGridView1.Location = New System.Drawing.Point(472, 126)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(371, 214)
@@ -284,7 +265,7 @@ Partial Class Form2
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(475, 9)
+        Me.Label6.Location = New System.Drawing.Point(468, 99)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(214, 20)
         Me.Label6.TabIndex = 20
@@ -294,7 +275,7 @@ Partial Class Form2
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(475, 267)
+        Me.Label7.Location = New System.Drawing.Point(468, 357)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(214, 20)
         Me.Label7.TabIndex = 21
@@ -303,7 +284,7 @@ Partial Class Form2
         'btn_MSloadRecords
         '
         Me.btn_MSloadRecords.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_MSloadRecords.Location = New System.Drawing.Point(84, 436)
+        Me.btn_MSloadRecords.Location = New System.Drawing.Point(21, 430)
         Me.btn_MSloadRecords.Name = "btn_MSloadRecords"
         Me.btn_MSloadRecords.Size = New System.Drawing.Size(139, 68)
         Me.btn_MSloadRecords.TabIndex = 22
@@ -313,18 +294,49 @@ Partial Class Form2
         'btn_MYloadRecords
         '
         Me.btn_MYloadRecords.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_MYloadRecords.Location = New System.Drawing.Point(251, 436)
+        Me.btn_MYloadRecords.Location = New System.Drawing.Point(175, 430)
         Me.btn_MYloadRecords.Name = "btn_MYloadRecords"
         Me.btn_MYloadRecords.Size = New System.Drawing.Size(139, 68)
         Me.btn_MYloadRecords.TabIndex = 23
         Me.btn_MYloadRecords.Text = "LOAD RECORDS (MYSQL)"
         Me.btn_MYloadRecords.UseVisualStyleBackColor = True
         '
+        'btn_Clear
+        '
+        Me.btn_Clear.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_Clear.Location = New System.Drawing.Point(320, 238)
+        Me.btn_Clear.Name = "btn_Clear"
+        Me.btn_Clear.Size = New System.Drawing.Size(110, 260)
+        Me.btn_Clear.TabIndex = 24
+        Me.btn_Clear.Text = "CLEAR"
+        Me.btn_Clear.UseVisualStyleBackColor = True
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(611, 24)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(88, 24)
+        Me.Label8.TabIndex = 25
+        Me.Label8.Text = "SEARCH"
+        '
+        'txtSearch
+        '
+        Me.txtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSearch.Location = New System.Drawing.Point(472, 51)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(371, 29)
+        Me.txtSearch.TabIndex = 26
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(877, 516)
+        Me.ClientSize = New System.Drawing.Size(877, 605)
+        Me.Controls.Add(Me.txtSearch)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.btn_Clear)
         Me.Controls.Add(Me.btn_MYloadRecords)
         Me.Controls.Add(Me.btn_MSloadRecords)
         Me.Controls.Add(Me.Label7)
@@ -342,11 +354,10 @@ Partial Class Form2
         Me.Controls.Add(Me.txtlname)
         Me.Controls.Add(Me.txtmname)
         Me.Controls.Add(Me.txtfname)
-        Me.Controls.Add(Me.txtID)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Form2"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "MSSQL_MYSQL_INSERTRECORDSvb"
@@ -356,12 +367,9 @@ Partial Class Form2
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents txtID As TextBox
     Friend WithEvents txtfname As TextBox
     Friend WithEvents txtmname As TextBox
     Friend WithEvents txtlname As TextBox
@@ -385,4 +393,7 @@ Partial Class Form2
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents btn_MYloadRecords As Button
+    Friend WithEvents btn_Clear As Button
+    Friend WithEvents Label8 As Label
+    Friend WithEvents txtSearch As TextBox
 End Class
